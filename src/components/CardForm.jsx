@@ -1,12 +1,11 @@
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import InputMask from "react-input-mask";
 
-const CardForm = () => {
+const CardForm = ({ cardholderName, setCardholderName }) => {
+
   const {
     register,
     handleSubmit,
-    setValue,
-    trigger,
     formState: { errors },
   } = useForm();
 
@@ -14,87 +13,93 @@ const CardForm = () => {
     console.log(data);
   };
 
-  const handleExpMonthChange = (e) => {
-    setValue("expMonth", e.target.value, { shouldValidate: true });
-    trigger("expMonth");
-  };
-
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="absolute top-80">
+    <form onSubmit={handleSubmit(onSubmit)} className="form">
 
-      <label htmlFor="">cardholder name</label>  
-      <input className="input-field block"
+      <label htmlFor="cardholderName" className="input-label">
+        cardholder name
+      </label>
+
+      <input
         {...register("cardholderName", {
           required: "Can't be blank",
           pattern: {
             value: /^[A-Za-zÀ-ÿ]+$/,
-            message: "Wrong format, characters only",
+            message: "Wrong format, letters only",
           },
+          maxLength: 30,
+          onChange: (e) => setCardholderName(e.target.value)
         })}
         type="text"
+        id="cardholderName"
         placeholder="e.g. Jane Appleseed"
+        className="input-field"
       />
-      {errors.cardholderName && <div>{errors.cardholderName.message}</div>}
 
-      <label htmlFor="">cardholder number</label> 
-      <InputMask className="input-field"
-        mask="9999 9999 9999 9999"
+      {errors.cardholderName && <span className="error">{errors.cardholderName.message}</span>}
+
+      <label htmlFor="cardholderNumber" className="input-label">
+        card number
+      </label>
+
+      <InputMask 
+        mask="**** **** **** ****"
         maskChar=""
-        {...register("cardNumber", {
+        {...register("cardholderNumber", {
           required: "Can't be blank",
-          pattern: {
-            value: /^\d{4} \d{4} \d{4} \d{4}$/,
-            message: "Wrong format, numbers only",
-          },
+          validate: value => /^\d{0,4} ?\d{0,4} ?\d{0,4} ?\d{0,4}$/.test(value) || "Wrong format, numbers only",
         })}
-        onChange={(e) => {
-          setValue("cardNumber", e.target.value, { shouldValidate: true });
-          trigger("cardNumber");
-        }}
+        id="cardholderNumber"
         placeholder="e.g. 1234 5678 9123 0000"
+        className="input-field"
       />
-      {errors.cardNumber && <div>{errors.cardNumber.message}</div>}
 
-      <div>
+      {errors.cardholderNumber && <span className="error">{errors.cardholderNumber.message}</span>}
+
+      <div className="flex items-center justify-between">
         <div>
-        <label htmlFor="">cardholder name</label> 
-          <InputMask className="input-field"
-            mask="99"
-            maskChar=""
-            {...register("expMonth", {
-              required: "Can't be blank",
-              validate: (value) => {
-                const month = parseInt(value, 10);
-                return (month >= 1 && month <= 12) || "Invalid month";
-              },
-            })}
-            onChange={handleExpMonthChange}
-            placeholder="MM"
-          />
-          {errors.expMonth && <div>{errors.expMonth.message}</div>}
+          <label htmlFor="expMonth" className="input-label">
+            exp. date (mm/yy)
+          </label>
 
-          <input className="input-field"
-            {...register("expYear", {
-              required: "Can't be blank",
-            })}
-            type="text"
-            placeholder="YY"
-          />
-          {errors.expYear && <div>{errors.expYear.message}</div>}
+          <div className="flex items-center gap-2">
+            <InputMask
+              mask="99"
+              maskChar=""
+              {...register("expMonth", {
+                required: "Can't be blank",
+              })}
+              id="expMonth"
+              placeholder="MM"
+              className="input-field w-16"
+            />
+            <input
+              type="text"
+              id="expYear"
+              placeholder="YY"
+              className="input-field w-16"
+            />
+            
+          </div>
         </div>
 
-        <InputMask className="input-field"
-          mask="999"
-          maskChar=""
-          {...register("cvc", {
-            required: "Can't be blank",
-          })}
-          placeholder="e.g. 123"
-        />
-        {errors.cvc && <div>{errors.cvc.message}</div>}
+        <div>
+          <label htmlFor="cvc" className="input-label">
+            cvc
+          </label>
+
+          <input
+            type="text"
+            id="cvc"
+            placeholder="e.g. 123"
+            className="input-field w-44"
+          />
+        </div>
+
       </div>
 
-      <button type="submit">Confirm</button>
+      <button type="submit" className="button">Confirm</button>
+
     </form>
   );
 };

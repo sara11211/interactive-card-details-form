@@ -1,16 +1,16 @@
 import { bgCardFront, cardLogo } from "../assets/images";
 
-const CardFront = ({ cardholderName }) => {
+const CardFront = ({ cardholderName, cardNumber, expMonth, expYear }) => {
   return (
-    <div className="absolute top-32 left-[4%] z-10 bg-[url('../src/assets/images/bg-card-front.png')] bg-no-repeat bg-cover bg-center w-[285px] h-[155px] rounded-md p-5 text-light-grayish-violet grid gap-8">
+    <div className="card bg-[url('../src/assets/images/bg-card-front.png')] z-10 p-5 grid gap-8 right-[10%] bottom-[-25%] border-2 border-green-400">
       <img src={cardLogo} alt="card logo" width={50} />
       <div className="grid gap-3">
         <p className="text-lg text-left tracking-widest">
-          0000 0000 0000 0000
+          {cardNumber || '0000 0000 0000 0000'}
         </p>
-        <div className="flex justify-between items-center text-[0.7rem]">
+        <div className="flex justify-between items-center text-[0.6rem]">
           <p className="uppercase">{cardholderName || 'Jane Appleseed'}</p>
-          <p>00/00</p>
+          <p>{expMonth || '00'}/{expYear || '00'}</p>
         </div>
       </div>
     </div>

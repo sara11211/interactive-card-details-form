@@ -1,13 +1,15 @@
-import { set, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import InputMask from "react-input-mask";
 
-const CardForm = ({ cardholderName, setCardholderName }) => {
+const CardForm = ({ setCardholderName, setCardNumber, setExpMonth, setExpYear, setCvc }) => {
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    mode: 'onSubmit',
+  });
 
   const onSubmit = (data) => {
     console.log(data);
@@ -24,10 +26,9 @@ const CardForm = ({ cardholderName, setCardholderName }) => {
         {...register("cardholderName", {
           required: "Can't be blank",
           pattern: {
-            value: /^[A-Za-zÀ-ÿ]+$/,
+            value: /^[A-Za-zÀ-ÿ ]+$/,
             message: "Wrong format, letters only",
           },
-          maxLength: 30,
           onChange: (e) => setCardholderName(e.target.value)
         })}
         type="text"
@@ -45,16 +46,20 @@ const CardForm = ({ cardholderName, setCardholderName }) => {
       <InputMask 
         mask="**** **** **** ****"
         maskChar=""
-        {...register("cardholderNumber", {
+        {...register("cardNumber", {
           required: "Can't be blank",
-          validate: value => /^\d{0,4} ?\d{0,4} ?\d{0,4} ?\d{0,4}$/.test(value) || "Wrong format, numbers only",
+          validate: {
+            pattern: value => /^\d{0,4} ?\d{0,4} ?\d{0,4} ?\d{0,4}$/.test(value) || "Wrong format, numbers only",
+            length: value => value.length === 19 || "Card number is too short"
+          },
+          onChange: (e) => setCardNumber(e.target.value)
         })}
-        id="cardholderNumber"
+        id="cardNumber"
         placeholder="e.g. 1234 5678 9123 0000"
         className="input-field"
       />
 
-      {errors.cardholderNumber && <span className="error">{errors.cardholderNumber.message}</span>}
+      {errors.cardNumber && <span className="error">{errors.cardNumber.message}</span>}
 
       <div className="flex items-center justify-between">
         <div>
@@ -68,19 +73,30 @@ const CardForm = ({ cardholderName, setCardholderName }) => {
               maskChar=""
               {...register("expMonth", {
                 required: "Can't be blank",
-              })}
+                validate: value => (value >= 1 && value <= 12) || "Invalid month",
+                onChange: (e) => setExpMonth(e.target.value)
+                }
+              )}
               id="expMonth"
               placeholder="MM"
               className="input-field w-16"
             />
-            <input
-              type="text"
+            <InputMask
+              mask="99"
+              maskChar=""
+              {...register("expYear", {
+                required: "Can't be blank",
+                onChange: (e) => setExpYear(e.target.value)
+              })}
               id="expYear"
               placeholder="YY"
               className="input-field w-16"
             />
-            
+
           </div>
+
+          {(errors.expMonth || errors.expYear) && <span className="error">{errors.expMonth.message || errors.expYear.message}</span>}
+
         </div>
 
         <div>
@@ -88,14 +104,19 @@ const CardForm = ({ cardholderName, setCardholderName }) => {
             cvc
           </label>
 
-          <input
-            type="text"
+          <InputMask
+            mask="999"
+            maskChar=""
+            {...register("cvc", {
+              required: "Can't be blank",
+              onChange: (e) => setCvc(e.target.value)
+            })}
             id="cvc"
             placeholder="e.g. 123"
             className="input-field w-44"
           />
-        </div>
-
+          {errors.cvc && <span className="error">{errors.cvc.message}</span>} 
+        </div>    
       </div>
 
       <button type="submit" className="button">Confirm</button>

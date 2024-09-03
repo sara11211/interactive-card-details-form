@@ -8,11 +8,15 @@
   .input-field::placeholder {
     @apply text-dark-grayish-violet font-medium
   }
+
+  body {
+    @apply w-full min-h-lvh
+  }
 }
 
 @layer components {
   .card {
-    @apply bg-no-repeat bg-cover bg-center rounded-md text-white font-normal tracking-wider absolute min-h-[160px]
+    @apply bg-no-repeat bg-cover bg-center rounded-md text-white font-normal tracking-wider min-h-[160px] min-w-[250px] max-w-[280px] absolute
   }
 
   .input-label {
@@ -28,7 +32,7 @@
   }
 
   .form {
-    @apply grid px-6 w-full
+    @apply grid w-full
   }
 
   .error {

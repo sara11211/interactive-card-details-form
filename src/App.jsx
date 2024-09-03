@@ -12,9 +12,9 @@ const App = () => {
   const [cvc, setCvc] = useState("");
 
   return (
-    <main className="relative font-space-grotesk font-medium h-screen w-screen">
-      <div className="border-2 border-blue-400 w-full h-[40%] bg-[url('../src/assets/images/bg-main-mobile.png')] bg-no-repeat bg-cover bg-center flex items-center justify-center">
-        <div className="relative border-2 border-pink-500 w-[75%] max-w-[400px] h-full">
+    <main className="w-full h-screen font-medium font-space-grotesk">
+      <div className="bg-[url('../src/assets/images/bg-main-mobile.png')] bg-no-repeat bg-cover bg-center h-[50%] flex justify-center items-center w-full">
+        <div className="min-w-[300px] border-2 h-full border-yellow-500 relative">
           <CardFront
             cardholderName={cardholderName}
             cardNumber={cardNumber}
@@ -25,7 +25,7 @@ const App = () => {
           <CardBack cvc={cvc} />
         </div>
       </div>
-      {/* <div>
+      <div className="mt-24 max-w-[500px] mx-4">
         <CardForm
           setCardholderName={setCardholderName}
           setCardNumber={setCardNumber}
@@ -33,7 +33,7 @@ const App = () => {
           setExpYear={setExpYear}
           setCvc={setCvc}
         />
-      </div> */}
+      </div>
     </main>
   );
 };

@@ -24,8 +24,12 @@
   }
 
   .input-field {
-    @apply block border border-light-grayish-violet px-2 py-1.5 rounded-md mt-1 mb-4
+    @apply block border border-light-grayish-violet px-2 py-1.5 rounded-md mt-2 mb-1
     ;
+  }
+
+  label {
+    @apply mt-4
   }
 
   .input-field:focus {
@@ -47,6 +51,6 @@
   }
 
   .error {
-    @apply text-red text-xs py-2 
+    @apply text-red text-xs 
   }
 }

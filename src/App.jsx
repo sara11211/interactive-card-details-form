@@ -26,7 +26,7 @@ const App = () => {
           <CardBack cvc={cvc} />
         </div>
       </div>
-      <div className="py-24 max-w-[500px] px-4 mx-auto">
+      <div className="pt-24 max-w-[500px] px-4 mx-auto">
         <CardForm
           setCardholderName={setCardholderName}
           setCardNumber={setCardNumber}

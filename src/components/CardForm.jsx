@@ -108,7 +108,7 @@ const CardForm = ({
             />
           </div>
           {(errors.expMonth || errors.expYear) && (
-            <span className="absolute left-0 -bottom-6 error">
+            <span className="absolute left-0 -bottom-4 error">
               {errors.expMonth?.message || errors.expYear?.message}
             </span>
           )}
@@ -132,11 +132,11 @@ const CardForm = ({
               errors.cvc ? "border-red" : ""
             }`}
           />
-          {errors.cvc && <span className="absolute left-0 error -bottom-6">{errors.cvc.message}</span>}
+          {errors.cvc && <span className="absolute left-0 error -bottom-4">{errors.cvc.message}</span>}
         </div>
       </div>
 
-      <button type="submit" className="py-2 mt-4 button">
+      <button type="submit" className="py-2 my-6 button">
         Confirm
       </button>
     </form>

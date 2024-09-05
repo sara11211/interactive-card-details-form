@@ -7,11 +7,11 @@ const CardFront = ({ cardholderName, cardNumber, expMonth, expYear }) => {
     .replace(/(\d{4})(?=\d)/g, "$1 ");
 
   return (
-    <div className="card bg-[url('../src/assets/images/bg-card-front.png')] z-10 p-5 grid gap-8 max-md:-bottom-10 md:top-0 md:left-8">
+    <div className="card bg-[url('../src/assets/images/bg-card-front.png')] z-10 p-5 grid gap-8 max-xl:-bottom-10 xl:top-0 xl:left-0">
       <img src={cardLogo} alt="card logo" width={50} />
       <div className="grid gap-3">
         <p
-          className="text-lg tracking-widest text-left"
+          className="text-xl text-left trackigng-widest"
           style={{ fontVariantNumeric: "tabular-nums" }}
         >
           {formattedCardNumber}

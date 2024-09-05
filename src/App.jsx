@@ -13,9 +13,9 @@ const App = () => {
   const [cvc, setCvc] = useState("");
 
   return (
-    <main className="w-full h-screen font-medium font-space-grotesk">
-      <div className="bg-[url('../src/assets/images/bg-main-mobile.png')] bg-no-repeat bg-cover bg-center h-[40%] flex justify-center items-center max-md:w-full md:bg-[url('../src/assets/images/bg-main-desktop.png')] md:absolute md:top-0 md:left-0 md:h-full">
-        <div className="min-w-[300px] max-md:h-full relative max-md:pt-24 md:flex md:items-center md:justify-center min-h-[350px] md:left-[30%] md:min-w-[350px]">
+    <main className="w-full h-screen font-medium font-space-grotesk xl:flex xl:items-center xl:justify-center">
+      <div className="bg-[url('../src/assets/images/bg-main-mobile.png')] bg-no-repeat bg-cover bg-center h-[40%] flex justify-center items-center max-xl:w-full xl:bg-[url('../src/assets/images/bg-main-desktop.png')] xl:h-full xl:w-[30%]">
+        <div className="min-w-[300px] max-xl:h-full relative max-xl:pt-24 xl:flex xl:items-center xl:justify-center xl:min-h-[350px] xl:left-[30%] xl:min-w-[350px]">
           <CardFront
             cardholderName={cardholderName}
             cardNumber={cardNumber}
@@ -26,7 +26,7 @@ const App = () => {
           <CardBack cvc={cvc} />
         </div>
       </div>
-      {/* <div className="pt-24 max-w-[500px] px-4 mx-auto">
+      <div className="max-xl:pt-24 px-4 max-xl:mx-auto xl:w-[70%] flex items-center justify-center">
         <CardForm
           setCardholderName={setCardholderName}
           setCardNumber={setCardNumber}
@@ -34,10 +34,7 @@ const App = () => {
           setExpYear={setExpYear}
           setCvc={setCvc}
         />
-      </div> */}
-      {/* <div className="my-24 max-w-[280px] grid mx-auto">
-      <ThankYou />
-      </div> */}
+      </div>
     </main>
   );
 };

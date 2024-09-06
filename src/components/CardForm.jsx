@@ -136,7 +136,7 @@ const CardForm = ({
         </div>
       </div>
 
-      <button type="submit" className="py-2 my-6 button">
+      <button type="submit" className="my-6 button">
         Confirm
       </button>
     </form>

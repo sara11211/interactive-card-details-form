@@ -21,7 +21,7 @@ const App = () => {
   return (
     <main className="w-full h-screen font-medium font-space-grotesk lg:flex lg:items-center ">
       <div className="bg-[url('../src/assets/images/bg-main-mobile.png')] bg-no-repeat bg-cover bg-center h-[40%] flex justify-center items-center max-lg:w-full lg:bg-[url('../src/assets/images/bg-main-desktop.png')] lg:h-full lg:w-[35%]">
-        <div className="min-w-[300px] max-lg:h-full relative max-lg:pt-24 lg:flex lg:items-center lg:justify-center lg:min-h-[350px] lg:left-[40%] lg:min-w-[300px] xl:min-w-[350px]">
+        <div className="min-w-[300px] max-lg:h-full relative max-lg:pt-24 lg:flex lg:items-center lg:justify-center lg:min-h-[350px] lg:left-[40%] lg:min-w-[300px] xl:min-w-[400px] xl:max-w-[500px] xl:min-h-[400px]">
           <CardFront
             cardholderName={cardholderName}
             cardNumber={cardNumber}
@@ -32,7 +32,7 @@ const App = () => {
           <CardBack cvc={cvc} />
         </div>
       </div>
-      <div className="max-lg:pt-20 px-4 mx-auto lg:w-[70%] flex items-center justify-center max-w-[350px] relative">
+      <div className="max-lg:pt-20 px-4 mx-auto lg:w-[70%] flex items-center justify-center max-w-[350px]  relative">
         {!showThanks && <CardForm
           setCardholderName={setCardholderName}
           setCardNumber={setCardNumber}

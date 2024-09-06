@@ -16,15 +16,15 @@
 
 @layer components {
   .card {
-    @apply bg-no-repeat bg-cover bg-center rounded-md text-white font-normal tracking-wider min-h-[160px] min-w-[250px] absolute max-w-[280px] xl:min-w-[280px] shadow-2xl
+    @apply bg-no-repeat bg-cover bg-center rounded-md text-white font-normal tracking-wider min-h-[160px] min-w-[250px] absolute max-w-[280px] xl:min-w-[330px] xl:min-h-[180px] shadow-2xl
   }
 
   .input-label {
-    @apply uppercase text-[0.7rem] font-medium tracking-widest;
+    @apply uppercase text-[0.7rem] lg:text-[0.8rem] 2xl:text-base font-medium tracking-widest; 
   }
 
   .input-field {
-    @apply block px-3 py-2 mt-2 mb-1 border rounded-md border-light-grayish-violet ;
+    @apply block px-3 py-2 mt-2 mb-1 border rounded-md border-light-grayish-violet 2xl:px-4 2xl:py-3 ;
   }
 
   label {
@@ -42,7 +42,7 @@
   }
 
   .button {
-    @apply bg-very-dark-violet text-white rounded-md 
+    @apply bg-very-dark-violet text-white rounded-md py-2 lg:py-3
   }
 
   .button:hover {
@@ -50,7 +50,7 @@
   }
 
   .form {
-    @apply grid w-full lg:absolute lg:left-[15%]
+    @apply grid w-full lg:absolute lg:left-[10%] xl:left-[5%] 2xl:left-[0%]
   }
 
   .error {

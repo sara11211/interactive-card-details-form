@@ -11,12 +11,12 @@ const CardFront = ({ cardholderName, cardNumber, expMonth, expYear }) => {
       <img src={cardLogo} alt="card logo" width={50} />
       <div className="grid gap-3">
         <p
-          className="text-lg text-center trackigng-widest xl:text-xl"
+          className="text-lg text-center trackigng-widest xl:text-2xl"
           style={{ fontVariantNumeric: "tabular-nums" }}
         >
           {formattedCardNumber}
         </p>
-        <div className="flex justify-between items-center text-[0.6rem]">
+        <div className="flex justify-between items-center text-[0.6rem] lg:text-[0.7rem]">
           <p className="uppercase">{cardholderName || "Jane Appleseed"}</p>
           <p>
             {expMonth || "00"}/{expYear || "00"}

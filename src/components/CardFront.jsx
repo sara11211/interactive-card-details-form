@@ -1,4 +1,4 @@
-import { bgCardFront, cardLogo } from "../assets/images";
+import { cardLogo } from "../assets/images";
 
 const CardFront = ({ cardholderName, cardNumber, expMonth, expYear }) => {
   const formattedCardNumber = (cardNumber || "")
@@ -7,11 +7,11 @@ const CardFront = ({ cardholderName, cardNumber, expMonth, expYear }) => {
     .replace(/(\d{4})(?=\d)/g, "$1 ");
 
   return (
-    <div className="card bg-[url('../src/assets/images/bg-card-front.png')] z-10 p-5 grid gap-8 max-xl:-bottom-10 xl:top-0 xl:left-0">
+    <div className="card bg-[url('../src/assets/images/bg-card-front.png')] z-10 p-5 grid gap-8 max-lg:-bottom-10 lg:top-0 lg:left-0">
       <img src={cardLogo} alt="card logo" width={50} />
       <div className="grid gap-3">
         <p
-          className="text-xl text-left trackigng-widest"
+          className="text-lg text-center trackigng-widest xl:text-xl"
           style={{ fontVariantNumeric: "tabular-nums" }}
         >
           {formattedCardNumber}

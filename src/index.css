@@ -16,7 +16,7 @@
 
 @layer components {
   .card {
-    @apply bg-no-repeat bg-cover bg-center rounded-md text-white font-normal tracking-wider min-h-[160px] min-w-[250px]  absolute max-w-[280px]
+    @apply bg-no-repeat bg-cover bg-center rounded-md text-white font-normal tracking-wider min-h-[160px] min-w-[250px] absolute max-w-[280px] xl:min-w-[280px] shadow-2xl
   }
 
   .input-label {
@@ -24,8 +24,7 @@
   }
 
   .input-field {
-    @apply block border border-light-grayish-violet px-2 py-1.5 rounded-md mt-2 mb-1
-    ;
+    @apply block px-3 py-2 mt-2 mb-1 border rounded-md border-light-grayish-violet ;
   }
 
   label {
@@ -46,8 +45,12 @@
     @apply bg-very-dark-violet text-white rounded-md 
   }
 
+  .button:hover {
+    background-color: hsl(278, 68%, 20%);
+  }
+
   .form {
-    @apply grid w-full max-lg:max-w-[500px] max-w-[650px]
+    @apply grid w-full lg:absolute lg:left-[15%]
   }
 
   .error {

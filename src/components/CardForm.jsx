@@ -1,5 +1,7 @@
 import { useForm } from "react-hook-form";
 import InputMask from "react-input-mask";
+import { useEffect } from "react";
+import { iconCompleted } from "../assets/images";
 
 const CardForm = ({
   setCardholderName,
@@ -7,6 +9,7 @@ const CardForm = ({
   setExpMonth,
   setExpYear,
   setCvc,
+  onSubmit
 }) => {
   const {
     register,
@@ -16,16 +19,13 @@ const CardForm = ({
     mode: "onSubmit",
   });
 
-  const onSubmit = (data) => {
-    console.log(data);
-  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="form">
       <label htmlFor="cardholderName" className="input-label">
         cardholder name
       </label>
-
+      
       <input
         {...register("cardholderName", {
           required: "Can't be blank",
@@ -72,7 +72,7 @@ const CardForm = ({
         <span className="error">{errors.cardNumber.message}</span>
       )}
 
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between mt-2">
         <div className="relative">
           <label htmlFor="expMonth" className="input-label">
             exp. date (mm/yy)
@@ -85,7 +85,7 @@ const CardForm = ({
                 required: "Can't be blank",
                 validate: (value) =>
                   (value >= 1 && value <= 12) || "Invalid month",
-                onChange: (e) => setExpMonth(e.target.value),
+                onChange: (e) => setExpMonth(e.target.value.padStart(2, '0')),
               })}
               id="expMonth"
               placeholder="MM"

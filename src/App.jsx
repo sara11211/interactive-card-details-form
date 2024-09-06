@@ -12,10 +12,16 @@ const App = () => {
   const [expYear, setExpYear] = useState("");
   const [cvc, setCvc] = useState("");
 
+  const [showThanks, setShowThanks] = useState(false);
+
+  const onSubmit = () => {
+    setShowThanks(true);
+  };
+
   return (
-    <main className="w-full h-screen font-medium font-space-grotesk xl:flex xl:items-center xl:justify-center">
-      <div className="bg-[url('../src/assets/images/bg-main-mobile.png')] bg-no-repeat bg-cover bg-center h-[40%] flex justify-center items-center max-xl:w-full xl:bg-[url('../src/assets/images/bg-main-desktop.png')] xl:h-full xl:w-[30%]">
-        <div className="min-w-[300px] max-xl:h-full relative max-xl:pt-24 xl:flex xl:items-center xl:justify-center xl:min-h-[350px] xl:left-[30%] xl:min-w-[350px]">
+    <main className="w-full h-screen font-medium font-space-grotesk lg:flex lg:items-center ">
+      <div className="bg-[url('../src/assets/images/bg-main-mobile.png')] bg-no-repeat bg-cover bg-center h-[40%] flex justify-center items-center max-lg:w-full lg:bg-[url('../src/assets/images/bg-main-desktop.png')] lg:h-full lg:w-[35%]">
+        <div className="min-w-[300px] max-lg:h-full relative max-lg:pt-24 lg:flex lg:items-center lg:justify-center lg:min-h-[350px] lg:left-[40%] lg:min-w-[300px] xl:min-w-[350px]">
           <CardFront
             cardholderName={cardholderName}
             cardNumber={cardNumber}
@@ -26,14 +32,16 @@ const App = () => {
           <CardBack cvc={cvc} />
         </div>
       </div>
-      <div className="max-xl:pt-24 px-4 max-xl:mx-auto xl:w-[70%] flex items-center justify-center">
-        <CardForm
+      <div className="max-lg:pt-20 px-4 mx-auto lg:w-[70%] flex items-center justify-center max-w-[350px] relative">
+        {!showThanks && <CardForm
           setCardholderName={setCardholderName}
           setCardNumber={setCardNumber}
           setExpMonth={setExpMonth}
           setExpYear={setExpYear}
           setCvc={setCvc}
-        />
+          onSubmit={onSubmit}
+        />}
+        {showThanks && <ThankYou />}
       </div>
     </main>
   );

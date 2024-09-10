@@ -1,6 +1,6 @@
 # Frontend Mentor - Interactive card form
 
-This is a solution to the [Interactive card form]([https://www.frontendmentor.io/challenges/intro-section-with-dropdown-navigation-ryaPetHE5](https://www.frontendmentor.io/challenges/interactive-card-details-form-XpS8cKZDWw)). 
+This is a solution to the [Interactive card form](https://www.frontendmentor.io/challenges/interactive-card-details-form-XpS8cKZDWw). 
 
 ## The challenge
 
